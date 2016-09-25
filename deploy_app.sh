@@ -15,7 +15,9 @@ if [ $ret -ne 0 ]; then
   exit $ret
 fi
 
-cd target/appengine-try-java-1.0 && mvn appengine:update
+set -x
+cd $HOME/$CIRCLE_PROJECT_REPONAME && mvn appengine:update
+set +x
 
 if [ $? -ne 0 ]; then
   echo "Failed to deploy to AppEngine"
