@@ -17,7 +17,7 @@ fi
 
 echo "Deploying to AppEngine"
 set -x
-cd $HOME/$CIRCLE_PROJECT_REPONAME && mvn gcloud -q app deploy app.yaml --promote --version=staging
+cd $HOME/$CIRCLE_PROJECT_REPONAME && mvn gcloud -q app deploy app.yaml
 set +x
 
 if [ $? -ne 0 ]; then
