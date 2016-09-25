@@ -21,3 +21,4 @@ deployment:
     branch: master
     commands:
       - /bin/bash $HOME/$CIRCLE_PROJECT_REPONAME/deploy_app.sh
+      - cd $HOME/$CIRCLE_PROJECT_REPONAME and mvn appengine:update
