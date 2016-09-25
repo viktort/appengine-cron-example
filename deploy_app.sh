@@ -17,7 +17,7 @@ fi
 
 echo "Deploying to AppEngine"
 set -x
-cd $HOME/$CIRCLE_PROJECT_REPONAME && mvn appengine:update
+cd $HOME/$CIRCLE_PROJECT_REPONAME && mvn appengine:update -U
 set +x
 
 if [ $? -ne 0 ]; then
