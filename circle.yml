@@ -1,0 +1,17 @@
+machine:
+  java:
+    version: oraclejdk8
+
+dependencies:
+  override:
+    - echo 'no dependencies just yet'
+#    - $HOME/$CIRCLE_PROJECT_REPONAME/configure_host.sh
+#    - mvn --batch-mode clean verify | egrep -v "(^\[INFO\] Download|^\[INFO\].*skipping)"
+#    - mvn --fail-never dependency:go-offline || true
+  post:
+    - echo 'no post scripts just yet'
+#    - mvn clean cobertura:cobertura coveralls:report
+
+test:
+  override:
+    - echo 'no tests, only deploy!'
