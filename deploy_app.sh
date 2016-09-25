@@ -15,6 +15,7 @@ if [ $ret -ne 0 ]; then
   exit $ret
 fi
 
+echo "Deploying to AppEngine"
 set -x
 cd $HOME/$CIRCLE_PROJECT_REPONAME && mvn appengine:update
 set +x
