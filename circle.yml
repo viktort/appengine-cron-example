@@ -20,5 +20,4 @@ deployment:
   deploy:
     branch: master
     commands:
-      - cd $HOME/$CIRCLE_PROJECT_REPONAME && ./deploy_app.sh:
-          timeout: 2400
+      - $HOME/$CIRCLE_PROJECT_REPONAME/deploy_app.sh:
