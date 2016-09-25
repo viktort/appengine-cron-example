@@ -20,4 +20,4 @@ deployment:
   deploy:
     branch: master
     commands:
-      - $HOME/$CIRCLE_PROJECT_REPONAME/deploy_app.sh
+      - /bin/bash $HOME/$CIRCLE_PROJECT_REPONAME/deploy_app.sh
