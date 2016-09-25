@@ -8,8 +8,16 @@ app_name=`ls -1 target/*.jar  | cut -d "/" -f 2 | tee VERSIONS.txt | grep -v ori
 /opt/google-cloud-sdk/bin/gcloud auth activate-service-account --key-file account.json
 
 gsutil cp -r target/appengine-try-java-1.0/* gs://${GSTORAGE_DEST_BUCKET}/appengine-try-java-1.0/
+
 ret=$?
 if [ $ret -ne 0 ]; then
   echo "Failed to cp application files to gstorage"
   exit $ret
+fi
+
+cd target/appengine-try-java-1.0 && mvn appengine:udapte
+
+if [ $? -ne 0 ]; then
+  echo "Failed to deploy to AppEngine"
+  exit $?
 fi
