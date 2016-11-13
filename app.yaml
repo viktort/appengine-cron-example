@@ -2,4 +2,4 @@ runtime: java
 vm: true
 
 env_variables:
-  GOOGLE_APPLICATION_CREDENTIALS: ./account.json
+  GOOGLE_APPLICATION_CREDENTIALS: appengine-try-java-1.0/WEB_INF/account.json
