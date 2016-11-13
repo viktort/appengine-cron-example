@@ -6,8 +6,8 @@ dependencies:
   override:
     - echo 'no dependencies just yet'
     - cd $HOME/$CIRCLE_PROJECT_REPONAME && echo $GOOGLE_CREDENTIALS > account.json
-    - cp account.json $HOME/$CIRCLE_PROJECT_REPONAME/src/main/webapp/WEB_INF
-    - ls $HOME/$CIRCLE_PROJECT_REPONAME/src/main/webapp/WEB_INF/
+    - cp account.json $HOME/$CIRCLE_PROJECT_REPONAME/src/main/webapp/WEB-INF
+    - ls $HOME/$CIRCLE_PROJECT_REPONAME/src/main/webapp/WEB-INF/
     - mvn --batch-mode clean verify | egrep -v "(^\[INFO\] Download|^\[INFO\].*skipping)"
 #    - mvn clean cobertura:cobertura coveralls:report
     - mvn --fail-never dependency:go-offline || true
