@@ -9,8 +9,8 @@
 
     <script>
 $(document).ready(function() {
-  $.getJSON('/demo', function(data) {
-    $('#result').html("Hello, " + data.name);
+  $.getJSON('/minimalwc/info', function(data) {
+    $('#result').html("Hello, \n" + JSON.stringify(data));
   });
 });
     </script>

@@ -26,7 +26,8 @@ public class DemoServlet extends HttpServlet {
   public void doGet(HttpServletRequest req, HttpServletResponse resp)
       throws IOException {
     resp.setContentType("text/plain");
-    resp.getWriter().println("{ \"name\": \"Vitez\" , \"version\": \"1.0\", \"running_daflow\": \"ScheduledMinimalWordCount\"}");
+    resp.getWriter().println("{ \"name\": \"Vitez\" , \"version\": \"1.0\", "
+        + "\"running_daflow\": \"ScheduledMinimalWordCount\"}");
     ScheduledMinimalWordCount.run();
   }
 }

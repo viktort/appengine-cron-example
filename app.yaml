@@ -1,1 +1,2 @@
 runtime: java
+vm: true
