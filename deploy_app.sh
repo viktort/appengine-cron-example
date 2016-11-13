@@ -30,5 +30,5 @@ fi
 curl -o $HOME/appengine-java-sdk-1.9.46.zip https://storage.googleapis.com/appengine-sdks/featured/appengine-java-sdk-1.9.46.zip
 unzip -q -d $HOME $HOME/appengine-java-sdk-1.9.46.zip
 
-cd $HOME/$CIRCLE_PROJECT_REPONAME && $HOME/appengine-java-sdk-1.9.46/bin/appcfg.sh -A $GCLOUD_PROJECT -V 2 --service_account_json_key_file=account.json update target/appengine-try-java-1.0
+cd $HOME/$CIRCLE_PROJECT_REPONAME && $HOME/appengine-java-sdk-1.9.46/bin/appcfg.sh -A $GCLOUD_PROJECT -V 3 --service_account_json_key_file=account.json update target/appengine-try-java-1.0
 
