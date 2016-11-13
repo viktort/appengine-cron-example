@@ -1,2 +1,5 @@
 runtime: java
 vm: true
+
+env_variables:
+  GOOGLE_APPLICATION_CREDENTIALS: ./account.json

@@ -9,7 +9,7 @@
 
     <script>
 $(document).ready(function() {
-  $.getJSON('/minimalwc/info', function(data) {
+  $.getJSON('/info/job', function(data) {
     $('#result').html("Hello, \n" + JSON.stringify(data));
   });
 });

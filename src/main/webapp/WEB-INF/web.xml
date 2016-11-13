@@ -18,7 +18,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>info</servlet-name>
-        <url-pattern>/minimalwc/info</url-pattern>
+        <url-pattern>/info/job</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
