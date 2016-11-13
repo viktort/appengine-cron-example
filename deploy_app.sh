@@ -5,7 +5,6 @@ echo "*** deploying project ***"
 #  application name to an env var
 app_name=`ls -1 target/*.war  | cut -d "/" -f 2 | tee VERSIONS.txt | grep -v original | tail -n 1 | cut -d "-" -f 1`
 
-gcloud components update app
 gcloud auth activate-service-account --key-file account.json
 
 gcloud config set project $GCLOUD_PROJECT
