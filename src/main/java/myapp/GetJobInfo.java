@@ -28,10 +28,8 @@ public class GetJobInfo extends HttpServlet {
 
   public void getMinimalWordCountInfo(HttpServletRequest req, HttpServletResponse resp)
       throws IOException {
-    if (req.getParameter("name") == "minimalwordcount") {
-      resp.setContentType("text/plain");
-      resp.getWriter().println("{ \"name\": \"ScheduledMinimalWordCount\" , \"version\": \"1.0\","
-          + " \"runs\": \"daily\"}");
-    }
+    resp.setContentType("text/plain");
+    resp.getWriter().println("{ \"name\": \"ScheduledMinimalWordCount\" , \"version\": \"1.0\","
+        + " \"runs\": \"daily\"}");
   }
 }
