@@ -2,4 +2,3 @@ cron:
  - description: Cron job to schedule Dataflow pipeline
    url: /demo
    schedule: every 30 mins
-   login: admin
