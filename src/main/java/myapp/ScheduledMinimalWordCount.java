@@ -38,7 +38,7 @@ public class ScheduledMinimalWordCount {
         }))
         .apply(Count.<String>perElement())
         .apply("FormatResults", MapElements.via(new SimpleFunction<KV<String, Long>, String>() {
-          @Override
+//          @Override
           public String apply(KV<String, Long> input) {
             return input.getKey() + ": " + input.getValue();
           }
