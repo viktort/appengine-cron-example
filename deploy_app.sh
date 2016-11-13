@@ -19,7 +19,15 @@ if [ $? -ne 0 ]; then
 
 fi
 
+gsutil cp -r target/appengine-try-java-1.0/* gs://${GSTORAGE_DEST_BUCKET}/appengine-try-java-1.0/
+
+ret=$?
+if [ $ret -ne 0 ]; then
+  echo "Failed to cp application files to gstorage"
+  exit $ret
+fi
+
 curl -o $HOME/google_appengine_1.9.40.zip https://storage.googleapis.com/appengine-sdks/featured/google_appengine_1.9.40.zip
 unzip -q -d $HOME $HOME/google_appengine_1.9.40.zip
 
-cd $HOME/$CIRCLE_PROJECT_REPONAME && gcloud --quiet preview app deploy app.yaml --version 1 --promote
+cd $HOME/$CIRCLE_PROJECT_REPONAME && mvn appengine:update
