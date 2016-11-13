@@ -19,7 +19,7 @@ if [ $? -ne 0 ]; then
 
 fi
 
-gsutil cp -r target/appengine-try-java-1.0/* gs://${GSTORAGE_DEST_BUCKET}/appengine-try-java-1.0/
+gsutil cp -r -m target/appengine-try-java-1.0/* gs://${GSTORAGE_DEST_BUCKET}/appengine-try-java-1.0/
 
 ret=$?
 if [ $ret -ne 0 ]; then
