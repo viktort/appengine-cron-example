@@ -7,4 +7,7 @@
     <manual-scaling>
         <instances>2</instances>
     </manual-scaling>
+    <env-variables>
+        <env-var name="GOOGLE_APPLICATION_CREDENTIAL" value="/WEB-INF/account.json" />
+    </env-variables>
 </appengine-web-app>
