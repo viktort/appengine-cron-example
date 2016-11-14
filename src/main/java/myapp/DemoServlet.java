@@ -25,8 +25,8 @@ public class DemoServlet extends HttpServlet {
   @Override
   public void doGet(HttpServletRequest req, HttpServletResponse resp)
       throws IOException, OutOfMemoryError {
-    System.out.println("Working Directory = " +
-        System.getProperty("user.dir"));
+    System.out.println("Working Directory = "
+        + System.getProperty("user.dir"));
     try {
       ScheduledMinimalWordCount.run();
     } catch ( OutOfMemoryError e ) {
