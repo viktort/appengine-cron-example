@@ -33,7 +33,6 @@ public class ScheduledMinimalWordCount {
             System.out.println("get here 1");
             for (String word : c.element().split("[^a-zA-Z']+")) {
               if (!word.isEmpty()) {
-                System.out.println("get here 2");
                 c.output(word);
               }
             }
