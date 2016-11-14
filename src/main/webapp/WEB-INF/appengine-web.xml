@@ -4,4 +4,7 @@
     <version>1</version>
     <threadsafe>true</threadsafe>
     <instance-class>B4</instance-class>
+    <manual-scaling>
+        <instances>2</instances>
+    </manual-scaling>
 </appengine-web-app>
