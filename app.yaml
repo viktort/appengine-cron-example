@@ -1,10 +1,6 @@
 runtime: java
 vm: true
 
-runtime_config:
-   jdk: openjdk8
-   server: jetty9
-
 resources:
   cpu: .5
   memory_gb: 1.3

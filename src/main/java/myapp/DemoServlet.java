@@ -24,9 +24,13 @@ import javax.servlet.http.HttpServletResponse;
 public class DemoServlet extends HttpServlet {
   @Override
   public void doGet(HttpServletRequest req, HttpServletResponse resp)
-      throws IOException {
+      throws IOException, OutOfMemoryError {
     System.out.println("Working Directory = " +
         System.getProperty("user.dir"));
-    ScheduledMinimalWordCount.run();
+    try {
+      ScheduledMinimalWordCount.run();
+    } catch ( OutOfMemoryError e ) {
+      System.out.println("OOM ERROR = " + e);
+    }
   }
 }
