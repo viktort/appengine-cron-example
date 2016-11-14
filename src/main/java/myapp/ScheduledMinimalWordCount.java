@@ -25,6 +25,7 @@ public class ScheduledMinimalWordCount {
 
     Pipeline p = Pipeline.create(options);
 
+    System.out.println("get here 0");
     p.apply(TextIO.Read.from("gs://dataflow-samples/shakespeare/allswellthatendswell.txt"))
         .apply(ParDo.named("ExtractWords").of(new DoFn<String, String>() {
           @Override
