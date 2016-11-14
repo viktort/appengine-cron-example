@@ -29,8 +29,10 @@ public class ScheduledMinimalWordCount {
         .apply(ParDo.named("ExtractWords").of(new DoFn<String, String>() {
           @Override
           public void processElement(ProcessContext c) {
+            System.out.println("get here 1");
             for (String word : c.element().split("[^a-zA-Z']+")) {
               if (!word.isEmpty()) {
+                System.out.println("get here 2");
                 c.output(word);
               }
             }
@@ -38,8 +40,9 @@ public class ScheduledMinimalWordCount {
         }))
         .apply(Count.<String>perElement())
         .apply("FormatResults", MapElements.via(new SimpleFunction<KV<String, Long>, String>() {
-//          @Override
+          @Override
           public String apply(KV<String, Long> input) {
+            System.out.println("get here 3");
             return input.getKey() + ": " + input.getValue();
           }
         }))
