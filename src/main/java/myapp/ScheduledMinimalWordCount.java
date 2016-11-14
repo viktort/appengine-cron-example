@@ -17,6 +17,7 @@ import java.io.File;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.net.URLClassLoader;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -33,7 +34,7 @@ public class ScheduledMinimalWordCount {
       throw new IllegalArgumentException(message);
     }
 
-    List<String> files = new ArrayList<>();
+    List<String> files = new ArrayList<String>();
     for (URL url : ((URLClassLoader) classLoader).getURLs()) {
       try {
         File file = new File(url.toURI());
@@ -57,7 +58,7 @@ public class ScheduledMinimalWordCount {
         .as(DataflowPipelineOptions.class);
     options.setRunner(BlockingDataflowPipelineRunner.class);
     options.setProject("cpb100");
-    options.setFilesToStage(detectClassPathResourcesToStage(DataflowPipelineRunner.class.getClassLoader());
+    options.setFilesToStage(detectClassPathResourcesToStage(DataflowPipelineRunner.class.getClassLoader()));
     options.setStagingLocation("gs://dataflow-chrome-oven-144308/stagingForScheduledPipeline");
 
     Pipeline p = Pipeline.create(options);
