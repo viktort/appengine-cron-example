@@ -58,13 +58,17 @@ public class ScheduledMinimalWordCount {
         .as(DataflowPipelineOptions.class);
     options.setRunner(BlockingDataflowPipelineRunner.class);
     options.setProject("chrome-oven-144308");
-    options.setFilesToStage(detectClassPathResourcesToStage(DataflowPipelineRunner.class.getClassLoader()));
+    options.setFilesToStage(
+        detectClassPathResourcesToStage(
+            DataflowPipelineRunner.class.getClassLoader()
+        )
+    );
     options.setStagingLocation("gs://dataflow-chrome-oven-144308/stagingForScheduledPipeline");
 
     Pipeline p = Pipeline.create(options);
 
     System.out.println("get here 0");
-    p.apply(TextIO.Read.from("gs://dataflow-samples/shakespeare/loverscomplaint.txt"))
+    p.apply(TextIO.Read.from("gs://dataflow-samples/shakespeare/*"))
         .apply(ParDo.named("ExtractWords").of(new DoFn<String, String>() {
           @Override
           public void processElement(ProcessContext c) {
