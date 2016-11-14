@@ -3,4 +3,5 @@
     <application>chrome-oven-144308</application>
     <version>1</version>
     <threadsafe>true</threadsafe>
+    <instance-class>B4</instance-class>
 </appengine-web-app>
