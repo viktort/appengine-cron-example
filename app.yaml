@@ -1,11 +1,10 @@
 runtime: java
 vm: true
 
-automatic_scaling:
-  max_idle_instances: automatic
-  max_pending_latency: automatic
-  max_concurrent_requests: 50
-  instance_class: F2
+resources:
+  cpu: .5
+  memory_gb: 1.3
+  disk_size_gb: 10
 
 env_variables:
   GOOGLE_APPLICATION_CREDENTIALS: /WEB-INF/account.json
