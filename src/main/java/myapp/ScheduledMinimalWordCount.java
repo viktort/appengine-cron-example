@@ -5,6 +5,7 @@ import com.google.cloud.dataflow.sdk.io.TextIO;
 import com.google.cloud.dataflow.sdk.options.DataflowPipelineOptions;
 import com.google.cloud.dataflow.sdk.options.PipelineOptionsFactory;
 import com.google.cloud.dataflow.sdk.runners.BlockingDataflowPipelineRunner;
+import com.google.cloud.dataflow.sdk.runners.DataflowPipelineRunner;
 import com.google.cloud.dataflow.sdk.transforms.Count;
 import com.google.cloud.dataflow.sdk.transforms.DoFn;
 import com.google.cloud.dataflow.sdk.transforms.MapElements;
@@ -12,16 +13,52 @@ import com.google.cloud.dataflow.sdk.transforms.ParDo;
 import com.google.cloud.dataflow.sdk.transforms.SimpleFunction;
 import com.google.cloud.dataflow.sdk.values.KV;
 
+import java.io.File;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.net.URLClassLoader;
+import java.util.List;
+
 /**
  * Created by viktor.trako on 13/11/16.
  */
 public class ScheduledMinimalWordCount {
+
+  private static final long FILE_BYTES_THRESHOLD = 10 * 1024 * 1024; // 10 MB
+
+  protected static List<String> detectClassPathResourcesToStage(ClassLoader classLoader) {
+    if (!(classLoader instanceof URLClassLoader)) {
+      String message = String.format("Unable to use ClassLoader to detect classpath elements. "
+          + "Current ClassLoader is %s, only URLClassLoaders are supported.", classLoader);
+      throw new IllegalArgumentException(message);
+    }
+
+    List<String> files = new ArrayList<>();
+    for (URL url : ((URLClassLoader) classLoader).getURLs()) {
+      try {
+        File file = new File(url.toURI());
+        if (file.length() < FILE_BYTES_THRESHOLD) {
+          files.add(file.getAbsolutePath());
+        }
+      } catch (IllegalArgumentException e ) {
+        String message = String.format("Unable to convert url (%s) to file.", url);
+        throw new IllegalArgumentException(message, e);
+      } catch (URISyntaxException e) {
+        String message = String.format("Unable to convert url (%s) to file.", url);
+        throw new IllegalArgumentException(message, e);
+      }
+
+    }
+    return files;
+  }
+
   public static void run() {
     DataflowPipelineOptions options = PipelineOptionsFactory.create()
         .as(DataflowPipelineOptions.class);
     options.setRunner(BlockingDataflowPipelineRunner.class);
     options.setProject("cpb100");
-//    options.setStagingLocation("gs://dataflow-chrome-oven-144308/stagingForScheduledPipeline");
+    options.setFilesToStage(detectClassPathResourcesToStage(DataflowPipelineRunner.class.getClassLoader());
+    options.setStagingLocation("gs://dataflow-chrome-oven-144308/stagingForScheduledPipeline");
 
     Pipeline p = Pipeline.create(options);
 
