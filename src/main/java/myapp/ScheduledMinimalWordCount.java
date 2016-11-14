@@ -57,7 +57,7 @@ public class ScheduledMinimalWordCount {
     DataflowPipelineOptions options = PipelineOptionsFactory.create()
         .as(DataflowPipelineOptions.class);
     options.setRunner(BlockingDataflowPipelineRunner.class);
-    options.setProject("cpb100");
+    options.setProject("chrome-oven-144308");
     options.setFilesToStage(detectClassPathResourcesToStage(DataflowPipelineRunner.class.getClassLoader()));
     options.setStagingLocation("gs://dataflow-chrome-oven-144308/stagingForScheduledPipeline");
 
